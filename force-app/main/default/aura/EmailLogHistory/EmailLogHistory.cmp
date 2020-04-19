@@ -1,0 +1,110 @@
+<aura:component controller="EmailLogHistoryController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+     <aura:attribute name="overlayPanel" type="Aura.Component[]" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     <aura:attribute name="EmailMsgs" type="EmailMessage[]" />
+    
+     <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <div class="slds-section slds-is-open" aura:id="EmailMessageSection">
+        <!--section header-->
+        <h3 class="slds-section__title slds-theme_shade">
+            <button aria-controls="emailMessageList" class="slds-button slds-section__title-action">
+                <span onclick="{!c.toggleSection}" data-auraId="EmailMessageSection" >
+                    <lightning:icon iconName="utility:switch"
+                                    size="x-small"
+                                    class="slds-section__title-action-icon slds-button__icon_left"
+                                    alternativeText="button icon" 
+					 />
+                </span>
+                <span class="slds-truncate" title="EmailMessagelogs">Email Message Logs</span>
+            </button>
+        </h3>
+        <!--section body-->
+
+   	<div class="slds-section__content" id="emailMessageList">
+        
+    <aura:if isTrue="{!not(empty(v.EmailMsgs))}">
+    <div class="slds-table--header-fixed_container slds-scrollable" style="height:250px;width:auto" >
+    <table class="slds-table slds-table_bordered slds-table--header-fixed slds-table_striped" > 
+      <thead>
+        <tr class="slds-text-title--caps" style = "text-align: center">
+          <th scope="col">
+            <div class="slds-truncate slds-cell-fixed" title="Name" >Email Subject
+              </div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate slds-cell-fixed" title="Company">From Address</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate slds-cell-fixed" title="Title">To Address</div>
+          </th>
+          <th scope="col">
+            <div class="slds-truncate slds-cell-fixed" title="Email">Message Date</div>
+          </th>
+            <th scope="col">
+                 </th>
+          <th scope="col">
+            <div class="slds-truncate slds-cell-fixed" title="Email">Created Date
+                    <lightning:icon iconName="utility:down" size="small"/>        
+              </div>
+          
+          </th>
+        </tr>
+      </thead>
+        
+        <aura:iteration var="oneMsg" items="{!v.EmailMsgs}">
+      <tbody>
+
+        <tr class="slds-hint-parent">
+           
+          <th scope="row">
+             
+            <h1><a id="{!oneMsg.Id}" title="Subject" href="#" onclick="{!c.getID}">
+				{!oneMsg.Subject}</a>
+              </h1>
+
+          </th>
+          <td>
+            <div class="slds-truncate" title="Company One" style="width: 150px">{!oneMsg.FromAddress}</div>
+                  
+          </td>
+          <td>
+            
+            <div class="slds-truncate" title="Director of Operations" style="width: 150px">{!oneMsg.ToAddress}</div>
+                    
+          </td>
+           <td>
+
+          <lightning:formattedDateTime value="{!oneMsg.MessageDate}"/>
+            
+                     
+          </td>
+            <td>
+                </td>
+          <td>
+              
+         <lightning:formattedDateTime value="{!oneMsg.CreatedDate}"/>
+                    
+          </td>
+             
+        </tr>
+
+      </tbody>
+      </aura:iteration>
+    </table>
+ 
+  </div>
+ 
+<aura:set attribute="else">
+    <div class="slds-table--header-fixed_container" style="height:50px;width:auto;color:Red" >
+        No Emails to display!
+    </div>
+    
+      </aura:set>
+  </aura:if> 
+
+           </div>
+
+  </div>
+</aura:component>

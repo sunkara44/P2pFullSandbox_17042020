@@ -1,0 +1,5 @@
+<apex:page >
+  <apex:outputPanel >
+     <script> location.href="/00ON000000119r2MAA?isdtp=vw"; </script>
+  </apex:outputPanel>
+</apex:page>

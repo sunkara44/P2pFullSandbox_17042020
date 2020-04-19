@@ -1,0 +1,12 @@
+<aura:component  implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="MCCampaign">
+	<aura:attribute name="MCActivity" type="MC4SF__MC_Subscriber_Activity__c[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.getMyObjects}" />
+   {!v.MCActivity}
+    <aura:iteration items="{!v.MCActivity}" var="mcc" >
+        
+    	<p>{!mcc.MC4SF__MC_Campaign__r.MC4SF__Archive_URL__c},
+    	{!mcc.MC4SF__MC_Campaign__r.Name},
+        {!mcc.MC4SF__MC_Subscriber__r.MC4SF__Email2__c}</p>
+		</aura:iteration>
+      
+</aura:component>

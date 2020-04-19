@@ -1,0 +1,51 @@
+<aura:component controller="EmailLogHistoryController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+     <aura:attribute name="overlayPanel" type="Aura.Component[]" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+     <aura:attribute name="EmailMsgs" type="EmailMessage[]" />
+    
+     <div style="background-color:White" class="slds-box"> 
+    <div class="slds-page-header slds-page-header_related-list">
+  	<div class="slds-page-header__row">
+    <div class="slds-page-header__col-title">
+        <div class="slds-media">
+        <div class="slds-media__body">
+          <div class="slds-page-header__name">
+            <div class="slds-page-header__name-title">
+              <h1>
+                <span class="slds-page-header__title slds-truncate" title="Contacts (will truncate)" style="font:10px;color:#1B5297 ">Email Message Logs</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     </div>
+    </div>
+        
+     <div class="slds-m-around_x-large slds-scrollable " style="background-color:White;height:200px;">
+        
+        <lightning:accordion activeSectionName="Email Message Logs">
+            <aura:iteration items="{!v.EmailMsgs}" var="oneMsg">
+                <lightning:accordionSection name="{!oneMsg.ID}" label="{!oneMsg.Subject}">
+                    <aura:set attribute="body">
+                        <div class="slds-theme_shade">
+                        <p><b>FromAddress</b> :  <h1><a id="{!oneMsg.Id}" title="Subject" href="#" onclick="{!c.getID}">
+                                                    {!oneMsg.Subject}</a>
+                                                  </h1>
+                        </p>
+                        <p><b>ToAddress</b> : {!oneMsg.ToAddress}</p>
+                        <p><b>MessageDate</b> : {!oneMsg.MessageDate}</p>
+                        <p><b>CreatedDate</b> : {!oneMsg.CreatedDate}</p>
+                        <p><b>Body</b> : {!oneMsg.TextBody}</p>
+                             </div>
+                    </aura:set>
+                </lightning:accordionSection>
+            </aura:iteration>
+
+            </lightning:accordion>
+        
+    </div>
+    
+    </div>
+</aura:component>

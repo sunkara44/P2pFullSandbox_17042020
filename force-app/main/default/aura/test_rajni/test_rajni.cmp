@@ -1,0 +1,28 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <div class="slds-tabs-mobile__container">
+  <ul class="slds-tabs-mobile">
+    <li class="slds-tabs-mobile__item">
+      <button class="slds-button slds-button_full-width, ReturnsListItem ListItem" aura:id="ReturnsListItem">
+        <span class="slds-truncate" title="Item One">Returns</span>
+        <div class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+           
+                <a href="javascript:void(0);" class="slds-navigation-list--vertical__action slds-text-link--reset link" aria-describedby="entity-header" aura:id="Returns" id="Returns" onclick="{!c.renderfilter}">Returns</a>
+           
+        </div>
+      </button>
+    </li>
+    <li class="slds-tabs-mobile__item">
+      <button class="slds-button slds-button_full-width, ReturnsListItem ListItem" aura:id="ReturnsListItem">
+        <span class="slds-truncate" title="Item Two">Registrations</span>
+        <div class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+          <a href="javascript:void(0);" class="slds-navigation-list--vertical__action slds-text-link--reset link" aria-describedby="entity-header" aura:id="Registration" id="Registration" onclick="{!c.renderfilter}">Registration</a>
+        </div>
+      </button>
+    </li>
+ </ul>
+
+ 
+</div>
+	
+</aura:component>

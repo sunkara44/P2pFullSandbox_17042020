@@ -1,0 +1,24 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+		
+	<div class="container"> 
+      
+         <aura:if isTrue="{!$Browser.isPhone}">
+               <!-- <div class="navigation" style="Text-align:center;float:left;margin-top:0px;">  -->
+            <c:LevyManagementNavigation />
+              <c:LevyManagementDashboard />
+       <!-- </div>-->
+             
+        <aura:set attribute="else">  
+         <div class="navigation" style="width:14%;Text-align:center;float:left;margin-top:0px;">
+        
+            <c:LevyManagementNavigation />
+         
+             </div>
+            <c:LevyManagementDashboard />
+             </aura:set>
+        </aura:if>
+</div>
+             
+        <!--<div class="slds-grid dashboard">-->
+  
+</aura:component>

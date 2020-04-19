@@ -1,0 +1,69 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="ASPDashboardAndAccordionContainerCon">
+    
+    <aura:attribute name="showDVDDownTime" type="Boolean" default="false"/>
+    <aura:attribute name="dvdDownTimeMessage" type="String" default=""/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <aura:if isTrue="{!$Browser.isPhone}"> 
+        
+           	<div class="container">
+        
+        <aura:if isTrue="{!not(v.showDVDDownTime)}">
+      
+                <c:AccordianNavigation />
+                <c:ASPDashboard />
+          
+        </aura:if>
+        
+        <aura:if isTrue="{!v.showDVDDownTime}">
+        
+          
+            <br/>
+            <br/>
+            <img src="{!$Resource.P2P_PortalLogo}"/>
+            <br/>
+            <br/>
+            <div style="font-weight:bold;font-size:16px;color: #1a3278;">
+             <aura:unescapedHtml value="{!v.dvdDownTimeMessage}"/>   
+            </div>
+          
+            
+        </aura:if>
+        
+    </div>
+        
+        
+        
+    <aura:set attribute="else">    
+    <div class="container">
+        
+        <aura:if isTrue="{!not(v.showDVDDownTime)}">
+            
+            <div class="navigation" style="width:14%;Text-align:center;float:left;margin-top:0px;">
+                <c:AccordianNavigation />
+            </div>
+            
+            <div class="slds-grid dashboard slds-text-align_right">
+                <c:ASPDashboard />
+            </div>
+        </aura:if>
+        
+        <aura:if isTrue="{!v.showDVDDownTime}">
+        
+          
+            <br/>
+            <br/>
+            <img src="{!$Resource.P2P_PortalLogo}"/>
+            <br/>
+            <br/>
+            <div style="font-weight:bold;font-size:16px;color: #1a3278;">
+             <aura:unescapedHtml value="{!v.dvdDownTimeMessage}"/>   
+            </div>
+          
+            
+        </aura:if>
+        
+    </div>
+        </aura:set>
+</aura:if>
+</aura:component>

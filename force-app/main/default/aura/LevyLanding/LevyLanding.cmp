@@ -1,0 +1,27 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="LoggedInUserController" >
+    
+    <div class="Container" >
+        <center>	
+              <aura:if isTrue = "{!$Browser.isPhone}">  
+                   <label class="slds-form-element__label">This is a test landing page --- Passenger Services Levy</label>
+                   <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2" style="padding-left: 0%;">
+                   
+                       <img src="{!$Resource.p2p300x200 + '/p2p300x200/TaxiRank-300x200.jpg'}"/>    
+                        <br/>
+                       <br/>
+                       <label class="slds-form-element__label">{!$Label.c.ASP_Home_Passengers_Services_Levy_Description}</label>
+                                    </div>
+                                  
+                  <aura:set attribute="else"> 
+                      
+            <c:NavigationCard title="Passenger Services Levy" 
+                              description="{!$Label.c.ASP_Home_Passengers_Services_Levy_Description}"
+                              buttontext="Manage Levy"
+                              buttonhref="/industryportal/s/levy-management?src=levyMenu"
+                              image="{!$Resource.p2p300x200 + '/p2p300x200/TaxiRank-300x200.jpg'}"
+                              hovertext="Passenger Services Levy"/>
+                       </aura:set>
+                      </aura:if>
+        </center>
+    </div>
+</aura:component>
